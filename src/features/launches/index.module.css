@@ -2,62 +2,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
     grid-gap: 1rem;
-}
-
-.card {
-    display: flex;
-    flex-direction: column;
-}
-
-.card :global(.ant-card-cover) {
-    width: 16rem;
-    height: 16rem;
-    margin: 0 auto;
-    padding: 1rem;
-    flex-grow: 1;
-}
-
-.card :global(.ant-card-cover) img {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-}
-
-.card :global(.ant-card-body) {
-    height: 10rem;
-    overflow: hidden;
-    padding: 1rem 1rem 0;
-}
-
-.disabledLink {
-    opacity: 0.2;
-    pointer-events: none;
-}
-
-.article {
-    height: 100%;
-    position: relative;
-}
-
-.article:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 25%;
-    bottom: 0;
-    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-}
-
-.heading {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 1rem;
 }
 
-.headingIcon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.cardLoading :global(.ant-card-cover) {
+    width: 16rem;
+    height: 16rem;
 }
 
-.details {}
+.cardLoading :global(.ant-card-body) {
+    height: 10rem;
+}

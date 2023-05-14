@@ -7,6 +7,8 @@ export type Pagination = {
 export type Filters = {
 	text?: string;
 	datesRange?: [string, string],
-	upcoming?: boolean;
-	success?: boolean;
+}
+
+export type RouterParams = {
+	launchId: string;
 }

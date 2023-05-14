@@ -1,4 +1,4 @@
-import { Button, DatePicker, Drawer, Form, Input, Switch } from "antd";
+import { Button, DatePicker, Drawer, Form, Input } from "antd";
 import React, { FC, useMemo } from "react";
 import { Dayjs } from "dayjs";
 
@@ -13,8 +13,6 @@ const { RangePicker } = DatePicker;
 type FiltersFormValues = {
 	text: string;
 	datesRange: [Dayjs, Dayjs];
-	success: boolean;
-	upcoming: boolean;
 }
 
 const Sidebar: FC = () => {
@@ -24,11 +22,9 @@ const Sidebar: FC = () => {
 
 	const filters = useAppSelector(selectFilters);
 
-	const handleFinish = ({ text, datesRange, success, upcoming }: FiltersFormValues) => {
+	const handleFinish = ({ text, datesRange }: FiltersFormValues) => {
 		dispatch(setFilters({
 			text,
-			success,
-			upcoming,
 			datesRange: datesRange
 				? [datesRange[0].toISOString(), datesRange[1].toISOString()]
 				: undefined,
@@ -50,8 +46,6 @@ const Sidebar: FC = () => {
 	const fields = useMemo(() => filters ? [
 		{ name: ["text"], value: filters.text },
 		{ name: ["datesRange"], value: filters.datesRange },
-		{ name: ["success"], value: filters.success },
-		{ name: ["upcoming"], value: filters.upcoming },
 	] : undefined, [filters]);
 
 	return (
@@ -78,16 +72,10 @@ const Sidebar: FC = () => {
 				fields={fields}
 			>
 				<Form.Item label="Search" name="text">
-					<Input />
+					<Input data-cy="search-input" />
 				</Form.Item>
 				<Form.Item label="Date range" name="datesRange">
 					<RangePicker allowEmpty={[true, true]} className={css.rangePicker} />
-				</Form.Item>
-				<Form.Item label="Successful" name="success" valuePropName="checked">
-					<Switch />
-				</Form.Item>
-				<Form.Item label="Upcoming" name="upcoming" valuePropName="checked">
-					<Switch />
 				</Form.Item>
 				<Form.Item>
 					<Button
@@ -95,6 +83,7 @@ const Sidebar: FC = () => {
 						form="filters"
 						type="primary"
 						htmlType="submit"
+						data-cy="submit-filters-button"
 					>
 						Submit
 					</Button>
@@ -102,6 +91,7 @@ const Sidebar: FC = () => {
 						className={css.button}
 						htmlType="button"
 						onClick={handleReset}
+						data-cy="reset-filters-button"
 					>
 						Reset
 					</Button>

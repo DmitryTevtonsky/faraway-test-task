@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { apiSlice } from "features/api";
+import { apiSlice } from "api";
 import { Filters, Pagination } from "types";
 
 export type CoreState = {
@@ -40,7 +40,6 @@ export const coreSlice = createSlice({
 			.addMatcher(
 				apiSlice.endpoints.getLaunches.matchFulfilled,
 				(state, { payload }) => {
-					console.log("check");
 					state.pagination = Object.assign(state.pagination, {
 						total: payload.totalDocs,
 					});

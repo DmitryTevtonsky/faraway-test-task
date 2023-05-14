@@ -1,8 +1,8 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 
-import { apiSlice } from "../features/api";
-import { coreReducer } from "../core/redux";
+import { apiSlice } from "api";
+import { coreReducer } from "core/redux";
 
 const store = configureStore({
 	devTools: process.env.NODE_ENV !== "production",

@@ -1,0 +1,27 @@
+.card {
+    margin-bottom: 1rem;
+}
+
+.card :global(.ant-card-cover) {
+    width: 32rem;
+    height: 32rem;
+    margin: 0 auto;
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+.cardCoverImage {
+    object-fit: contain;
+    height: 100%;
+}
+
+.metaTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.disabledLink {
+    pointer-events: none;
+    opacity: 0.5;
+}

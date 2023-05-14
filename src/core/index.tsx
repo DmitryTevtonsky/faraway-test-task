@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 
+import { Header, Main, Sidebar } from "./layouts";
+
 import css from "./index.module.css";
-import { Footer, Header, Main, Sidebar } from "./layouts";
 
 const Core: FC = () => {
 	return (
@@ -12,9 +13,6 @@ const Core: FC = () => {
 			<main className={css.main}>
 				<Main />
 			</main>
-			<footer className={css.footer}>
-				<Footer />
-			</footer>
 			<Sidebar />
 		</section>
 	);

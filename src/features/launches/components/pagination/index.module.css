@@ -1,11 +1,11 @@
-.сontent {
-    height: 100%;
-    margin: 0 auto;
-    padding: 1rem var(--sides-padding);
-    max-width: var(--max-width);
+.layout {
+    width: 100%;
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
+    border-radius: 0.5rem;
 }
 
 .pagination :global(.ant-pagination-item-container) {

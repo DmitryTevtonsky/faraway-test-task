@@ -1,0 +1,12 @@
+.carousel {
+    height: auto;
+    border-radius: 0.5rem;
+    background-color: black;
+    margin-bottom: 1rem;
+}
+
+.carouselImg {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}

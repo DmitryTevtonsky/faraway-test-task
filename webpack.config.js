@@ -1,4 +1,5 @@
 const path = require('path');
+const {DefinePlugin} = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -14,18 +15,11 @@ module.exports = function (env, { mode }) {
 			client: {
 				overlay: false,
 			},
-			proxy: {
-				'/v5/**': {
-					target: 'https://api.spacexdata.com/v5',
-					changeOrigin: true,
-					secure: false,
-				},
-			}
 		},
 		output: {
 			publicPath: '/',
-			filename: path.join('js', `bundle${mode === "production" ? ".[fullhash]" : ""}.js`),
-			chunkFilename: path.join('js', 'chunks', '[name].[contenthash].js'),
+			filename: `js/bundle${mode === "production" ? ".[fullhash]" : ""}.js`,
+			chunkFilename: 'js/chunks/[name].[contenthash].js',
 		},
 		resolve: {
 			modules: [path.resolve(__dirname, 'src'), 'node_modules'],
@@ -85,7 +79,7 @@ module.exports = function (env, { mode }) {
 			new ESLintPlugin(),
 			new HtmlWebpackPlugin({
 				template: './public/index.html',
-				publicPath: '/',
+				publicPath: mode === 'production' ? '/faraway-test-task' : "/",
 				minify: mode === 'production' && {
 					removeComments: true,
 					collapseWhitespace: true,
@@ -99,10 +93,13 @@ module.exports = function (env, { mode }) {
 					minifyURLs: true,
 				},
 			}),
+			new DefinePlugin({
+				'process.env.PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL),
+			}),
 		].concat(mode !== 'production' ? [] : [
 			new MiniCssExtractPlugin({
-				filename: path.join("css", `bundle${mode === "production" ? ".[fullhash]" : ""}.css`),
-				chunkFilename: path.join("css", "chunks", "[name].[contenthash].css"),
+				filename: `css/bundle${mode === "production" ? ".[fullhash]" : ""}.css`,
+				chunkFilename: "css/chunks/[name].[contenthash].css",
 			}),
 		]),
 	};

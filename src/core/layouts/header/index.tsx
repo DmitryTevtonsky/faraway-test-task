@@ -1,8 +1,9 @@
 import { Button } from "antd";
-import { toggleSidebarVisibility } from "core/redux/slice";
 import React, { FC } from "react";
+import { Link, Outlet, Route, Routes } from "react-router-dom";
 
 import { useAppDispatch } from "store";
+import { toggleSidebarVisibility } from "core/redux/slice";
 
 import css from "./index.module.css";
 
@@ -15,10 +16,27 @@ const Header: FC = () => {
 
 	return (
 		<div className={css.content}>
-			<h1>SpaceX launches</h1>
-			<Button type="primary" onClick={showFiltersSidebar}>
-				Filters
-			</Button>
+			<Link to="/">
+				<h1>SpaceX Launches</h1>
+			</Link>
+
+			<Routes>
+				<Route path="/" element={<Outlet />}>
+					<Route
+						index
+						element={
+							<Button
+								type="primary"
+								onClick={showFiltersSidebar}
+								data-cy="show-filters-button"
+							>
+								Filters
+							</Button>
+						}
+					/>
+					<Route path="*" element={null} />
+				</Route>
+			</Routes>
 		</div>
 	);
 };

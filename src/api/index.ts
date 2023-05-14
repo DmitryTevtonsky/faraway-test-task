@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { LaunchesResponse, LaunchRequest } from "./types";
+import { LaunchesResponse, LaunchesRequest, LaunchResponse } from "./types";
 
 export const apiSlice = createApi({
 	reducerPath: "api",
 	baseQuery: fetchBaseQuery({ baseUrl: "https://api.spacexdata.com/v5" }),
 	endpoints: builder => ({
-		getLaunches: builder.query<LaunchesResponse, LaunchRequest>({
+		getLaunches: builder.query<LaunchesResponse, LaunchesRequest>({
 			query: ({
 				query: { text, success, upcoming, datesRange },
 				options,
@@ -27,10 +27,14 @@ export const apiSlice = createApi({
 					options,
 				},
 			}),
-
+		}),
+		getLaunch: builder.query<LaunchResponse, string>({
+			query: (id) => ({
+				url: `/launches/${id}`,
+			}),
 		}),
 	}),
 
 });
 
-export const { useGetLaunchesQuery } = apiSlice;
+export const { useGetLaunchesQuery, useGetLaunchQuery } = apiSlice;

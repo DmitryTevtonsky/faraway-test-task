@@ -2,10 +2,10 @@ import { Button, Result } from "antd";
 import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-type LaunchesErrorProps = {
+type LaunchErrorProps = {
 	retry: () => Promise<unknown>;
 }
-const LaunchesError: FC<LaunchesErrorProps> = ({ retry }: LaunchesErrorProps) => {
+const LaunchError: FC<LaunchErrorProps> = ({ retry }: LaunchErrorProps) => {
 	const navigate = useNavigate();
 
 	const handleRetry = () => {
@@ -39,4 +39,4 @@ const LaunchesError: FC<LaunchesErrorProps> = ({ retry }: LaunchesErrorProps) =>
 	);
 };
 
-export default LaunchesError;
+export default LaunchError;

@@ -1,57 +1,33 @@
-import { BookOutlined, RocketOutlined, YoutubeOutlined } from "@ant-design/icons";
-import { Card, Skeleton } from "antd";
+import { Card } from "antd";
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
+
+import { selectPagination } from "core/redux/selectors";
+import { useAppSelector } from "store";
+
+import { Pagination } from "./components";
 
 import css from "./index.module.css";
 
 const LaunchesLoading: FC = () => {
+	const { pageSize } = useAppSelector(selectPagination);
 
 	return (
-		<div className={css.launches}>
-			{Array.from({ length: 5 }, (_, index) => (
-				<Card
-					loading
-					className={css.card}
-					key={index}
-					title={"..."}
-					cover={
-						<img
-							loading="lazy"
-						/>
-					}
-					actions={[
-						<Link
-							className={css.disabledLink}
-							key="spacex"
-							to="#"
-						>
-							<RocketOutlined />
-						</Link>,
-						<Link
-							className={css.disabledLink}
-							key="reddit"
-							to="#"
-						>
-							<BookOutlined />
-						</Link>,
-						<Link
-							className={css.disabledLink}
-							key="youtube"
-							to="#"
-						>
-							<YoutubeOutlined />
-						</Link>,
-
-					]}
-				>
-					<Card.Meta
-						title={" "}
-						description={"Second time a booster will be reused: Second flight of B1029 after the Iridium mission of January 2017. The satellite will be the first commercial Bulgarian-owned communications satellite and it will provide television broadcasts and other communications services over southeast Europe.						"}
-					/>
-				</Card>
-			))}
-		</div>
+		<>
+			<div className={css.launches}>
+				{Array.from({ length: pageSize }, (_, index) => (
+					<Card
+						key={index}
+						loading
+						className={css.cardLoading}
+						title={"..."}
+						cover={<div />}
+					>
+						<Card.Meta title={" "} />
+					</Card>
+				))}
+			</div>
+			<Pagination disabled pageSize={pageSize} />
+		</>
 	);
 };
 

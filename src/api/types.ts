@@ -11,8 +11,13 @@ export type Launch = {
 export type LaunchLinks = {
 	article: string;
 	webcast: string;
+	youtube_id: string;
 	wikipedia: string;
 	presskit: string;
+	flickr: {
+		original: string[];
+		small: string[];
+	},
 	patch: {
 		small: string;
 		large: string;
@@ -33,20 +38,21 @@ export type LaunchesResponse = {
 	nextPage: null
 }
 
-export type LaunchRequest = {
-	query: LaunchQuery;
-	options: LaunchOptions;
+export type LaunchesRequest = {
+	query: LaunchesQuery;
+	options: LaunchesOptions;
 }
 
-export type LaunchQuery = {
+export type LaunchesQuery = {
 	text?: string,
 	success?: boolean,
 	upcoming?: boolean,
 	datesRange?: [string, string],
-
 }
 
-export type LaunchOptions = {
+export type LaunchesOptions = {
 	page: number;
 	limit: number;
 }
+
+export type LaunchResponse = Launch;
