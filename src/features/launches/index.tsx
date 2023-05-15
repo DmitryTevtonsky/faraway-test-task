@@ -15,7 +15,7 @@ import css from "./index.module.css";
 const Launches: FC = () => {
 	const { page, pageSize } = useAppSelector(selectPagination);
 
-	const { text, datesRange, success, upcoming } = useAppSelector(selectFilters);
+	const { text, datesRange } = useAppSelector(selectFilters);
 
 	const { data, isLoading, isFetching, isError, refetch } = useGetLaunchesQuery({
 		options: {
@@ -24,8 +24,6 @@ const Launches: FC = () => {
 		},
 		query: {
 			text,
-			success,
-			upcoming,
 			datesRange,
 		},
 	});

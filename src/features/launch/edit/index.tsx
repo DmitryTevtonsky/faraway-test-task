@@ -30,8 +30,6 @@ const LaunchEdit: FC = () => {
 	const { name } = data;
 
 	const handleFinish = ({ name }: FormValues) => {
-		console.log(name);
-
 		dispatch(
 			apiSlice.util.updateQueryData("getLaunch", launchId, (draft) => {
 				Object.assign(draft, { name });

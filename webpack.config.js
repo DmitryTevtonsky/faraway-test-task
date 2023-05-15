@@ -17,7 +17,7 @@ module.exports = function (env, { mode }) {
 			},
 		},
 		output: {
-			publicPath: mode === 'production' ? '/faraway-test-task' : "/",
+			publicPath: mode === 'production' ? '/faraway-test-task/' : "/",
 			filename: `js/bundle${mode === "production" ? ".[fullhash]" : ""}.js`,
 			chunkFilename: 'js/chunks/[name].[contenthash].js',
 		},

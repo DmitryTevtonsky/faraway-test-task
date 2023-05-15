@@ -45,8 +45,6 @@ export type LaunchesRequest = {
 
 export type LaunchesQuery = {
 	text?: string,
-	success?: boolean,
-	upcoming?: boolean,
 	datesRange?: [string, string],
 }
 

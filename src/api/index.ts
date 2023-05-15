@@ -7,7 +7,7 @@ export const apiSlice = createApi({
 	endpoints: builder => ({
 		getLaunches: builder.query<LaunchesResponse, LaunchesRequest>({
 			query: ({
-				query: { text, success, upcoming, datesRange },
+				query: { text, datesRange },
 				options,
 			}) => ({
 				url: "/launches/query",
@@ -17,8 +17,6 @@ export const apiSlice = createApi({
 						$text: text && {
 							$search: text,
 						},
-						success: success,
-						upcoming: upcoming,
 						date_utc: datesRange && {
 							$gte: datesRange && datesRange[0],
 							$lte: datesRange && datesRange[1],
