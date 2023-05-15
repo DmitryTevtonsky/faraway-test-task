@@ -24,7 +24,8 @@
     "clean": "rimraf dist",
     "eslint": "eslint --fix . --ext .ts,.tsx,.js src",
     "deploy": "gh-pages -d dist",
-    "cy": "cypress open"
+    "cy": "cypress open",
+    "cy:run": "cypress run"
   },
   "eslintConfig": {
     "extends": [

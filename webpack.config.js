@@ -17,7 +17,7 @@ module.exports = function (env, { mode }) {
 			},
 		},
 		output: {
-			publicPath: '/',
+			publicPath: mode === 'production' ? '/faraway-test-task' : "/",
 			filename: `js/bundle${mode === "production" ? ".[fullhash]" : ""}.js`,
 			chunkFilename: 'js/chunks/[name].[contenthash].js',
 		},
@@ -79,6 +79,7 @@ module.exports = function (env, { mode }) {
 			new ESLintPlugin(),
 			new HtmlWebpackPlugin({
 				template: './public/index.html',
+				favicon: './public/favicon.ico', 
 				publicPath: mode === 'production' ? '/faraway-test-task' : "/",
 				minify: mode === 'production' && {
 					removeComments: true,
