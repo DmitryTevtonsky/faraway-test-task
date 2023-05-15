@@ -24,7 +24,7 @@ const Pagination: FC<PaginationProps> = ({
 	};
 
 	return (
-		<div className={css.layout}>
+		<div className={css.paginationLayout}>
 			<AntdPagination
 				disabled={disabled}
 				current={current}

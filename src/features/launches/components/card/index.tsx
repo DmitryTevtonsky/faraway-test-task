@@ -44,12 +44,12 @@ const Card: FC<CardProps> = ({ name, details, links, date_utc, success, upcoming
 			}
 		>
 			<article className={css.article}>
-				<div className={css.heading}>
+				<h3 className={css.heading}>
 					<Text type="secondary">
 						{dayjs(date_utc).format("YYYY.MM.DD HH:mm:ss [UTC]")}
 					</Text>
 					{renderStatus(upcoming, success)}
-				</div>
+				</h3>
 				<p className={css.details}>
 					{details}
 				</p>
