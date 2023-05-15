@@ -29,9 +29,13 @@ export const coreSlice = createSlice({
 			state.pagination = Object.assign(state.pagination, action.payload);
 		},
 		setFilters: (state, action: PayloadAction<Filters>) => {
+			state.pagination = Object.assign(state.pagination, initialState.pagination);
+
 			state.filters = Object.assign(state.filters, action.payload);
 		},
 		resetFilters: (state) => {
+			state.pagination = Object.assign(state.pagination, initialState.pagination);
+
 			state.filters = {};
 		},
 	},

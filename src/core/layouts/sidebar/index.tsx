@@ -1,6 +1,6 @@
 import { Button, DatePicker, Drawer, Form, Input } from "antd";
 import React, { FC, useMemo } from "react";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 import { selectFilters, selectSidebarVisibility } from "core/redux/selectors";
 import { resetFilters, setFilters, toggleSidebarVisibility } from "core/redux/slice";
@@ -45,7 +45,7 @@ const Sidebar: FC = () => {
 
 	const fields = useMemo(() => filters ? [
 		{ name: ["text"], value: filters.text },
-		{ name: ["datesRange"], value: filters.datesRange },
+		{ name: ["datesRange"], value: filters.datesRange?.map(string => dayjs(string)) },
 	] : undefined, [filters]);
 
 	return (
